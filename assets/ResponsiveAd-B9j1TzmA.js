@@ -1,0 +1,1 @@
+import{u as e,j as t,G as o}from"./index-CS1oHcyB.js";function r(){const{ADS_ENABLED:s}=e();return s?t.jsx(o,{slotId:"6102952450",className:"ad-responsive",style:{minHeight:120}}):null}export{r as ResponsiveAd};
