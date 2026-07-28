@@ -1,0 +1,1 @@
+import{u as a,j as e,t as r}from"./index-IBGw0XTU.js";function n(){const{ADS_ENABLED:s}=a();return s?e.jsxs("aside",{className:"ad-slot ad-responsive",role:"complementary",onClick:r,children:[e.jsx("span",{className:"ad-label",children:"Sponsored"}),e.jsx("p",{children:"Responsive ad placeholder"})]}):null}export{n as ResponsiveAd};
