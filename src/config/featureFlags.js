@@ -1,0 +1,32 @@
+const envFlags = {
+  ADS_ENABLED: import.meta.env.VITE_ADS_ENABLED === 'true',
+  PREMIUM_ENABLED: import.meta.env.VITE_PREMIUM_ENABLED === 'true',
+  REMOVE_ADS_FOR_PREMIUM: import.meta.env.VITE_REMOVE_ADS_FOR_PREMIUM !== 'false',
+  ANALYTICS_ENABLED: import.meta.env.VITE_ANALYTICS_ENABLED === 'true',
+  OCR_ENABLED: import.meta.env.VITE_OCR_ENABLED === 'true',
+  PDF_COMPRESSION_ENABLED: import.meta.env.VITE_PDF_COMPRESSION_ENABLED === 'true',
+  PASSWORD_PROTECTION_ENABLED: import.meta.env.VITE_PASSWORD_PROTECTION_ENABLED === 'true',
+  WATERMARK_ENABLED: import.meta.env.VITE_WATERMARK_ENABLED === 'true',
+  CLOUD_STORAGE_ENABLED: import.meta.env.VITE_CLOUD_STORAGE_ENABLED === 'true',
+  AI_ENHANCEMENT_ENABLED: import.meta.env.VITE_AI_ENHANCEMENT_ENABLED === 'true',
+  DOWNLOAD_HISTORY_ENABLED: import.meta.env.VITE_DOWNLOAD_HISTORY_ENABLED === 'true',
+  DARK_MODE_ENABLED: import.meta.env.VITE_DARK_MODE_ENABLED !== 'false',
+  MULTI_LANGUAGE_ENABLED: import.meta.env.VITE_MULTI_LANGUAGE_ENABLED === 'true',
+};
+
+export const FeatureFlags = {
+  ADS_ENABLED: true,
+  PREMIUM_ENABLED: false,
+  REMOVE_ADS_FOR_PREMIUM: true,
+  ANALYTICS_ENABLED: true,
+  OCR_ENABLED: false,
+  PDF_COMPRESSION_ENABLED: false,
+  PASSWORD_PROTECTION_ENABLED: false,
+  WATERMARK_ENABLED: false,
+  CLOUD_STORAGE_ENABLED: false,
+  AI_ENHANCEMENT_ENABLED: false,
+  DOWNLOAD_HISTORY_ENABLED: false,
+  DARK_MODE_ENABLED: true,
+  MULTI_LANGUAGE_ENABLED: false,
+  ...envFlags,
+};
