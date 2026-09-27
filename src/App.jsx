@@ -10,9 +10,7 @@ function App() {
     <PremiumProvider>
       <AdProvider>
         <AnalyticsProvider>
-          <AppLayout>
-            <HomePage />
-          </AppLayout>
+          <HomePage />
         </AnalyticsProvider>
       </AdProvider>
     </PremiumProvider>

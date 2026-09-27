@@ -3,15 +3,18 @@ import { AdContext } from './AdContext';
 import { loadGoogleAdsSdk } from '../sdk/googleAdsSdk';
 import { useFeatureFlags } from '../../hooks/useFeatureFlags';
 
-export function GoogleAdsProvider({ children }) {
+export function GoogleAdsProvider({ children, enabled = true }) {
   const { ADS_ENABLED } = useFeatureFlags();
   const [sdkLoaded, setSdkLoaded] = useState(false);
   const [error, setError] = useState(null);
+  const isAdEnabled = ADS_ENABLED && enabled;
 
   useEffect(() => {
     let cancelled = false;
 
-    if (!ADS_ENABLED) {
+    if (!isAdEnabled) {
+      setSdkLoaded(false);
+      setError(null);
       return undefined;
     }
 
@@ -30,14 +33,14 @@ export function GoogleAdsProvider({ children }) {
     return () => {
       cancelled = true;
     };
-  }, [ADS_ENABLED]);
+  }, [isAdEnabled]);
 
   const value = useMemo(() => ({
-    enabled: ADS_ENABLED,
+    enabled: isAdEnabled,
     sdkLoaded,
     error,
     provider: 'google',
-  }), [ADS_ENABLED, sdkLoaded, error]);
+  }), [isAdEnabled, sdkLoaded, error]);
 
   return <AdContext.Provider value={value}>{children}</AdContext.Provider>;
 }

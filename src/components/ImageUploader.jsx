@@ -26,7 +26,7 @@ export function ImageUploader({ onUpload }) {
       <div className="upload-content">
         <p className="upload-title">{isDragActive ? 'Drop your images here' : 'Drag and drop images here'}</p>
         <p className="upload-copy">or click to browse files from your device.</p>
-        <p className="upload-meta">PNG, JPG, and JPEG • Up to 10 MB each</p>
+        <p className="upload-meta">PNG, JPG, and JPEG • Upload less than 10 MB total</p>
         <button
           type="button"
           className="secondary-button"

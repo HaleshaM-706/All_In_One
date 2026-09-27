@@ -1,5 +1,5 @@
 import { useFeatureFlags } from '../hooks/useFeatureFlags';
-import { trackAdClicked } from '../analytics/events';
+import { GoogleAd } from './components/GoogleAd';
 
 export function FooterAd() {
   const { ADS_ENABLED } = useFeatureFlags();
@@ -7,9 +7,10 @@ export function FooterAd() {
   if (!ADS_ENABLED) return null;
 
   return (
-    <aside className="ad-slot ad-footer" role="complementary" onClick={trackAdClicked}>
-      <span className="ad-label">Sponsored</span>
-      <p>Footer ad placeholder</p>
-    </aside>
+    <GoogleAd
+      slotId={import.meta.env.VITE_GOOGLE_FOOTER_SLOT || '4278468968'}
+      className="ad-footer"
+      style={{ minHeight: 90 }}
+    />
   );
 }

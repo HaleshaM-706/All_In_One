@@ -1,5 +1,5 @@
 import { useFeatureFlags } from '../hooks/useFeatureFlags';
-import { trackAdClicked } from '../analytics/events';
+import { GoogleAd } from './components/GoogleAd';
 
 export function SidebarAd() {
   const { ADS_ENABLED } = useFeatureFlags();
@@ -7,9 +7,10 @@ export function SidebarAd() {
   if (!ADS_ENABLED) return null;
 
   return (
-    <aside className="ad-slot ad-sidebar" role="complementary" onClick={trackAdClicked}>
-      <span className="ad-label">Sponsored</span>
-      <p>Sidebar ad placeholder</p>
-    </aside>
+    <GoogleAd
+      slotId={import.meta.env.VITE_GOOGLE_SIDEBAR_SLOT || '6102952450'}
+      className="ad-sidebar"
+      style={{ minHeight: 600 }}
+    />
   );
 }

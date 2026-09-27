@@ -1,5 +1,5 @@
 import { useFeatureFlags } from '../hooks/useFeatureFlags';
-import { trackAdClicked } from '../analytics/events';
+import { GoogleAd } from './components/GoogleAd';
 
 export function TopBannerAd() {
   const { ADS_ENABLED } = useFeatureFlags();
@@ -7,9 +7,10 @@ export function TopBannerAd() {
   if (!ADS_ENABLED) return null;
 
   return (
-    <aside className="ad-slot ad-banner" role="complementary" onClick={trackAdClicked}>
-      <span className="ad-label">Sponsored</span>
-      <p>Ad placeholder • future provider integration ready</p>
-    </aside>
+    <GoogleAd
+      slotId={import.meta.env.VITE_GOOGLE_TOP_BANNER_SLOT || '4278468968'}
+      className="ad-banner"
+      style={{ minHeight: 90 }}
+    />
   );
 }

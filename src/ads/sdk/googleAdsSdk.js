@@ -11,6 +11,11 @@ export function loadGoogleAdsSdk() {
       return;
     }
 
+    if (!import.meta.env.VITE_GOOGLE_ADSENSE_CLIENT) {
+      reject(new Error('Google AdSense client ID is not configured.'));
+      return;
+    }
+
     if (window.adsbygoogle) {
       resolve();
       return;

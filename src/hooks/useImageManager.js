@@ -33,6 +33,14 @@ export function useImageManager() {
     const incomingFiles = Array.from(files || []);
     const errors = [];
     const validFiles = [];
+    const totalUploadSize = incomingFiles.reduce((total, file) => total + (file?.size || 0), 0);
+
+    if (totalUploadSize > 10 * 1024 * 1024) {
+      return {
+        addedCount: 0,
+        errors: ['Upload less than 10 MB.'],
+      };
+    }
 
     setImages((previousImages) => {
       incomingFiles.forEach((file) => {

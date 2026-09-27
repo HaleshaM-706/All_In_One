@@ -5,23 +5,31 @@ import { trackAdLoaded, trackAdClicked } from '../../analytics/events';
 export const GoogleAd = memo(function GoogleAd({ slotId, className = '', style = {} }) {
   const { sdkLoaded } = useAds();
   const containerRef = useRef(null);
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    if (!sdkLoaded || !containerRef.current) return;
+    if (!sdkLoaded || !containerRef.current || initializedRef.current) return;
 
     const ins = containerRef.current.querySelector('ins');
     if (!ins) return;
 
-    if (window.adsbygoogle && window.adsbygoogle.push) {
-      window.adsbygoogle.push({});
-      trackAdLoaded();
-    }
-  }, [sdkLoaded]);
+    initializedRef.current = true;
+
+    const timer = window.setTimeout(() => {
+      if (window.adsbygoogle?.push) {
+        window.adsbygoogle.push({});
+        trackAdLoaded();
+      }
+    }, 120);
+
+    return () => window.clearTimeout(timer);
+  }, [sdkLoaded, slotId]);
 
   if (!sdkLoaded) {
     return <div className={`ad-slot ad-skeleton ${className}`.trim()} style={style} aria-label="Loading advertisement" />;
   }
 
+//   console.log('Rendering GoogleAd with ins:', ins);
   return (
     <div ref={containerRef} className={`ad-slot ${className}`.trim()} style={style}>
       <ins

@@ -15,7 +15,7 @@ const envFlags = {
 };
 
 export const FeatureFlags = {
-  ADS_ENABLED: true,
+  ADS_ENABLED: false,
   PREMIUM_ENABLED: false,
   REMOVE_ADS_FOR_PREMIUM: true,
   ANALYTICS_ENABLED: true,
